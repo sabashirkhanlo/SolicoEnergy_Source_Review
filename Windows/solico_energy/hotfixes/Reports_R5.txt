@@ -1,0 +1,6 @@
+﻿SolicoEnergy Daily + Monthly Reports Hotfix R5
+Installed: 2026-10-05T13:06:07.4052232+03:30
+Detected version: 1.0.27
+Backup: C:\Users\POWER PLANT\AppData\Local\SolicoEnergy\hotfix_backups\ReportsR5_20261005_130607
+Preserves: AutoReport Notification R2 + DeviceArchive R3.1
+Fixes: live today delta + monthly MWh/MW units + Home archive title + manual notification retry

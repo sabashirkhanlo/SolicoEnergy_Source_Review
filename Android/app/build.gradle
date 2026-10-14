@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+def solicoVersionCode = (System.getenv('SOLICO_VERSION_CODE') ?: '67').toInteger()
+
+android {
+    namespace 'ir.solico.energyreport.lite'
+    compileSdk 35
+
+    // Required by UpdateManager.java for BuildConfig.VERSION_CODE on AGP 8.x.
+    buildFeatures {
+        buildConfig true
+    }
+
+    signingConfigs {
+        release {
+            def ks = System.getenv("SOLICO_KEYSTORE_FILE")
+            if (ks != null && !ks.trim().isEmpty()) {
+                storeFile file(ks)
+                storePassword System.getenv("SOLICO_KEYSTORE_PASSWORD")
+                keyAlias System.getenv("SOLICO_KEY_ALIAS")
+                keyPassword System.getenv("SOLICO_KEY_PASSWORD")
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId 'ir.solico.energyreport.lite'
+        minSdk 24
+        targetSdk 35
+        // Visible version stays fixed; CI supplies an ever-increasing internal code for updates.
+        versionCode solicoVersionCode
+        versionName '1.5.16'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            def ks = System.getenv("SOLICO_KEYSTORE_FILE")
+            if (ks != null && !ks.trim().isEmpty()) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.15.0'
+    implementation 'androidx.work:work-runtime:2.10.1'
+    implementation platform('com.google.firebase:firebase-bom:34.19.0')
+    implementation 'com.google.firebase:firebase-messaging'
+}

@@ -1,0 +1,14 @@
+SOLICOENERGY - REVIEW ONLY
+==========================
+
+این بسته Snapshot پاک‌سازی‌شده سورس است.
+
+هدف:
+- مشاهده و بررسی معماری و منطق برنامه
+- جلوگیری از افشای Credentialهای تولید
+- جدا نگه داشتن نسخه Review از Repository و Deployment اصلی
+
+این بسته شامل کلید امضای Android، Secretهای Registry، VAPID Private Key،
+GitHub deployment workflows و تنظیمات تولید Firebase نیست.
+
+هرگونه Build یا Deploy از روی این بسته نیازمند تنظیمات و Credentialهای جدید و مستقل است.

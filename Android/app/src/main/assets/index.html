@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#153E5C">
+<title>Solico</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <button id="menuBtn" class="header-action" type="button" aria-label="منو">
+    <span class="hamburger-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+  <div class="brand-center">
+    <b>Solico</b>
+    <small>پایش و گزارش نیروگاه کاله تهران</small>
+    <span id="todayDate" class="today-date">—</span>
+  </div>
+  <span class="header-spacer" aria-hidden="true"></span>
+</header>
+
+<main>
+  <section class="card latest-card">
+    <div class="latest-head">
+      <div class="latest-title-block">
+        <h1>Tehran Power Plant Report</h1>
+        <p id="latestReportTitle" class="muted">هنوز گزارشی دریافت نشده است.</p>
+        <div id="generatorStatus" class="generator-status hidden"></div>
+      </div>
+    </div>
+    <table class="kpi-table"><tbody>
+      <tr><th>مصرف کارخانه</th><td id="kpiFactory">—</td></tr>
+      <tr><th>تولید نیروگاه</th><td id="kpiPlant">—</td></tr>
+      <tr><th>دریافت از شبکه</th><td id="kpiGrid">—</td></tr>
+      <tr><th>سهم نیروگاه</th><td id="kpiShare">—</td></tr>
+      <tr><th>پیک مصرف کارخانه</th><td id="kpiPeak">—</td></tr>
+      <tr><th>متوسط توان مصرفی</th><td id="kpiAvg">—</td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="card archive-card">
+    <div class="archive-head">
+      <div>
+        <h2>آرشیو گزارش‌ها</h2>
+        
+      </div>
+      <div class="archive-tabs">
+        <button id="archiveDayTab" class="tab-btn active" type="button">روزانه</button>
+        <button id="archiveMonthTab" class="tab-btn" type="button">ماهانه</button>
+      </div>
+    </div>
+
+    <div id="archiveDayControls" class="archive-controls">
+      <button id="historyDate" class="archive-picker" type="button" data-value="">انتخاب تاریخ</button>
+    </div>
+
+    <div id="archiveMonthControls" class="archive-controls month-controls hidden">
+      <select id="historyYear" aria-label="سال"></select>
+      <select id="historyMonth" aria-label="ماه"></select>
+    </div>
+
+    <div id="monthSummary" class="month-summary hidden" aria-label="جمع ماهانه">
+      <div class="month-summary-title">جمع کل ماه</div>
+      <div class="month-summary-grid">
+        <div><span>مصرف کارخانه</span><b id="monthTotalFactory">—</b></div>
+        <div><span>تولید نیروگاه</span><b id="monthTotalPlant">—</b></div>
+        <div><span>دریافت از شبکه</span><b id="monthTotalGrid">—</b></div>
+        <div><span>سهم نیروگاه</span><b id="monthTotalShare">—</b></div>
+        <div><span>پیک مصرف کارخانه</span><b id="monthTotalPeak">—</b></div>
+        <div><span>متوسط توان مصرفی</span><b id="monthTotalAvg">—</b></div>
+      </div>
+      <div id="monthCoverage" class="month-coverage"></div>
+    </div>
+
+    <div id="monthMetricTabs" class="metric-tabs hidden" aria-label="شاخص نمودار ماهانه">
+      <button class="metric-btn active" data-metric="factory" type="button">مصرف کارخانه</button>
+      <button class="metric-btn" data-metric="plant" type="button">تولید نیروگاه</button>
+      <button class="metric-btn" data-metric="grid" type="button">دریافت از شبکه</button>
+      <button class="metric-btn" data-metric="share" type="button">سهم نیروگاه</button>
+      <button class="metric-btn" data-metric="peak" type="button">پیک مصرف کارخانه</button>
+      <button class="metric-btn" data-metric="avg" type="button">متوسط توان مصرفی</button>
+    </div>
+
+    <div id="archiveTitle" class="archive-chart-title"></div>
+    <div id="archiveGeneratorStatus" class="generator-status archive-generator-status hidden"></div>
+    <div id="archiveChart" class="chart-scroll"></div>
+
+    <div id="archiveEmpty" class="empty hidden">برای این بازه گزارشی ذخیره نشده است.</div>
+  </section>
+
+  <details class="card update-card">
+    <summary class="update-summary">
+      <span class="update-summary-title">به‌روزرسانی برنامه</span>
+      <span class="update-summary-version">نسخه <b id="appVersion">—</b></span>
+      <span class="update-chevron" aria-hidden="true">⌄</span>
+    </summary>
+    <div class="update-body">
+      <p class="muted">Solico هنگام باز شدن نسخه جدید را بررسی می‌کند. می‌توانی همین‌جا هم بررسی کنی.</p>
+      <button id="checkUpdateBtn" class="primary full">بررسی بروزرسانی آنلاین</button>
+      <button id="updateApkBtn" class="secondary full" style="margin-top:8px">انتخاب فایل APK (روش پشتیبان)</button>
+    </div>
+  </details>
+</main>
+
+<div id="menuOverlay" class="menu-overlay hidden">
+  <div class="menu-sheet">
+    <div class="menu-sheet-head">
+      <div><b>Solico</b><small>وضعیت و تنظیمات</small></div>
+      <button id="menuClose" class="menu-close" type="button">×</button>
+    </div>
+    <div class="menu-status-grid" aria-label="وضعیت اتصال">
+      <div><span>وضعیت اعلان‌ها</span><b id="fcmStatus">در حال بررسی...</b></div>
+      <div><span>اینترنت</span><b id="connectionStatus">در حال بررسی...</b></div>
+    </div>
+    <button id="repairFcmBtn" class="menu-action" type="button">ترمیم اعلان‌ها</button>
+    <button id="logoutBtn" class="menu-action danger" type="button">خروج از برنامه</button>
+  </div>
+</div>
+
+<div id="jalaliPicker" class="calendar-overlay hidden">
+  <div class="calendar-card">
+    <div class="calendar-top">
+      <button id="calPrev" type="button">‹</button>
+      <div>
+        <div id="calMonthTitle" class="calendar-month-title"></div>
+        <div id="calYearTitle" class="calendar-year-title"></div>
+      </div>
+      <button id="calNext" type="button">›</button>
+    </div>
+    <div class="calendar-week">
+      <span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span>ج</span>
+    </div>
+    <div id="calendarDays" class="calendar-days"></div>
+    <div class="calendar-actions">
+      <button id="calCancel" type="button">بستن</button>
+      <button id="calClear" type="button">پاک کردن تاریخ</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+<script src="app.js"></script>
+</body>
+</html>

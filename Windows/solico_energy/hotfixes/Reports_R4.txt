@@ -1,0 +1,5 @@
+﻿SolicoEnergy Daily + Monthly Reports Hotfix R4
+Installed: 2026-10-05T12:17:41.2237635+03:30
+Detected version: 1.0.27
+Backup: C:\Users\POWER PLANT\AppData\Local\SolicoEnergy\hotfix_backups\ReportsR4_20261005_121741
+Preserves: AutoReport Notification R2 + DeviceArchive R3.1

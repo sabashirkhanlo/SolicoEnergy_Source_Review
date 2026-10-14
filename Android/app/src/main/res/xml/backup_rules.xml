@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="solico_local_login.xml" />
+        <exclude domain="sharedpref" path="solico_device_registry.xml" />
+        <exclude domain="sharedpref" path="solico_fcm_state.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="solico_local_login.xml" />
+        <exclude domain="sharedpref" path="solico_device_registry.xml" />
+        <exclude domain="sharedpref" path="solico_fcm_state.xml" />
+    </device-transfer>
+</data-extraction-rules>

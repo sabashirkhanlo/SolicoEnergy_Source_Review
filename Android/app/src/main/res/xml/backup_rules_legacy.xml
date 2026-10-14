@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Never restore authentication/device-session state after uninstall/reinstall. -->
+    <exclude domain="sharedpref" path="solico_local_login.xml" />
+    <exclude domain="sharedpref" path="solico_device_registry.xml" />
+    <exclude domain="sharedpref" path="solico_fcm_state.xml" />
+</full-backup-content>
